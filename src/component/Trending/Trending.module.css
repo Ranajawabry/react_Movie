@@ -13,7 +13,7 @@
 .inner_Movies{
     overflow-x: scroll;
     overflow-y: hidden;
-    height: 405px;
+    height: 420px;
     transition: .5s;
     position: relative;
     background: linear-gradient(rgba(26, 209, 176 , 0.3),rgb(4, 183, 221, 0.3 )) !important;

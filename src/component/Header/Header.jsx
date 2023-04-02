@@ -6,7 +6,7 @@ import Search from '../Search/Search';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Header() {
-  let navigate= useNavigate
+  let navigate= useNavigate();
   let [search,setSearch]=useState('');
   
   let getSearch=(e)=>{
@@ -18,7 +18,10 @@ export default function Header() {
   let searchData=(e)=>{
     e.preventDefault();
     console.log('llll');
-    navigate(`/search/${search}`) 
+    if(search != ''){
+   
+      navigate(`/search/${search}`) 
+    }
   }
 
   return (

@@ -19,6 +19,7 @@ import TopRated from "./component/TopRated/TopRated";
 import NotFound from "./component/NotFound/NotFound";
 import Trending from "./component/Trending/Trending";
 import Search from "./component/Search/Search";
+import axios from "axios";
 
 export default function App() {
   let navigate= useNavigate();
@@ -36,8 +37,49 @@ export default function App() {
     navigate('/home');
 
   }
+
+  let[nowPlaying,setNowPlaying]=useState([]);
+   
+
+  let getNowPlaying=async()=>{
+     let{data}=await axios.get('https://api.themoviedb.org/3/movie/now_playing?api_key=b81e4ea3c1d3d04d265bfa9056fb7110&language=en-US&page=1');
+     setNowPlaying(data.results);
+  }
+
+  let[populars,setPopular]=useState([]);
+    
+  let getPopular=async()=>{
+        let{data}=await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=b81e4ea3c1d3d04d265bfa9056fb7110&language=en-US&page=1');
+       
+       setPopular(data.results);
+         
+     }
+   
+    
+
+   
+    let[topRated,setTopRated]=useState([]);
+    
+
+    let getTopRated=async()=>{
+       let{data}=await axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=b81e4ea3c1d3d04d265bfa9056fb7110&language=en-US&page=1');
+        setTopRated(data.results);
+    }
+
+    let[popularsTv,setPopularTv]=useState([]);
+    
+    let getPopularTv=async()=>{
+       let{data}=await axios.get('https://api.themoviedb.org/3/tv/popular?api_key=b81e4ea3c1d3d04d265bfa9056fb7110&language=en-US&page=1');
+       setPopularTv(data.results);
+    }
+   
+
   useEffect(() => {
     getUserData();
+    getNowPlaying();
+    getPopular();
+    getTopRated();
+    getPopularTv();
   }, []);
 
   return (
@@ -60,7 +102,7 @@ export default function App() {
           <Route path="/TV/popular" element={<TvPopular/>}></Route>
           <Route path="/movie/top_rated" element={<TopRated/>}></Route>
           <Route path="/trending" element={<Trending/>}></Route> 
-          <Route path="/search/:name" element={<Search/>}></Route>
+          <Route path="/search/:name" element={<Search  populars={populars} nowPlaying={nowPlaying}  topRated={topRated} popularsTv={popularsTv}/> }></Route>
           <Route path="*" element={<NotFound/>}></Route>
 
         </Route>

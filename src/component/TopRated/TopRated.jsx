@@ -17,8 +17,8 @@ export default function TopRated() {
         pageSize:8 
      })
   
-     let ChangePage=(page,e)=>{
-        e.preventDefault();
+     let ChangePage=(page)=>{
+        
         setPageInfo({...pageInfo , pageNumber:page});
   
      }

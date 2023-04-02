@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import InnerLoader from './InnerLoader';
 import style from './Trending.module.css'
 
+
+
+
 export default function Trending() {
  
  let[trending,setTrending]=useState([]);
@@ -46,12 +49,7 @@ export default function Trending() {
 
     }
  }
-//  let day= document.getElementById('day');
-//  console.log(day)
-//  day.addEventListener('click',()=>{
-//     console.log("llll")
-//     document.getElementById('day').classList.add('active');
-// })
+
 
  
  
@@ -71,7 +69,7 @@ export default function Trending() {
                 <h5 className={ `${style.title} px-3 pt-2`}  id='week'><a onClick={(e)=>{getTimewindow(e)}} href='#'>This Week</a></h5>
             </div>
         </div>
-        <div className={`${style.inner_Movies} d-flex gap-2 my-2 py-2 rounded `} >
+        <div className={`${style.inner_Movies} d-flex gap-2 my-2 p-2 rounded `} >
            
            { loader && <InnerLoader/> }
            

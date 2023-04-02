@@ -17,7 +17,7 @@ export default function Pagination({Array,ChangePage , pageNumber,pageSize}) {
   <ul className="pagination ">
    {
     pages.map((page,index)=>(
-        <li className={page==pageNumber?"page-item active": "page-item"} key={index} onClick={(e)=>{ChangePage(page,e)}}><a className="page-link" href="#">{page+1}</a></li>
+        <li className={page==pageNumber?"page-item active": "page-item"} key={index} onClick={()=>{ChangePage(page)}}><a className="page-link" href="#">{page+1}</a></li>
     ))
    
     }
